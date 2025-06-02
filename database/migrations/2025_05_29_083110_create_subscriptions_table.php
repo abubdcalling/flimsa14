@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('package_silvers', function (Blueprint $table) {
+        Schema::create('subscriptions', function (Blueprint $table) {
             $table->id();
-            $table->string('image')->nullable();
-            $table->string('title')->nullable();
-            $table->string('no_of_client')->nullable();
-            $table->string('price')->nullable();
-            $table->string('vat_type')->nullable();
+            $table->string('plan_name');
+            $table->decimal('price', 10, 2);
+            $table->longText('description')->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('package_silvers');
+        Schema::dropIfExists('subscriptions');
     }
 };
